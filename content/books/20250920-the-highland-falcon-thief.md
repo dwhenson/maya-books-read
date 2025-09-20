@@ -10,4 +10,4 @@ rating: 5
 review: "Maya's description here!!!!"
 ---
 
-Maya's review here!
+This book is great!
