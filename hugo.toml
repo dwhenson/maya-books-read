@@ -1,7 +1,7 @@
 baseURL = '/'
 languageCode = 'en-uk'
 title = 'Books Read'
-name = 'Dave Henson'
+name = 'Maya Henson'
 disableKinds = ['taxonomy', 'term']
 [markup.goldmark.renderer]
 unsafe = true
