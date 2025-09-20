@@ -1,0 +1,36 @@
+{{ define "main" }}
+<h1
+  class="book-detail {{ .Params.category }}-normal"
+  style="view-transition-name: header-{{ .Params.id  }}"
+>
+  {{ .Params.Title }}
+</h1>
+<h2>By {{ .Params.Author }}</h2>
+<p>
+  Finished during
+  {{ $year := slicestr .Date 0 4 }}
+  <a href="/books/#{{ $year }}">{{ $year }}</a>
+  |
+  <span class="{{ .Params.category }}-normal">{{ .Params.category | humanize }}</span>
+  {{ partial "rating.html" . }}
+</p>
+
+<section class="book-detail">
+  {{ partial "bookcover.html" . }}
+  <div
+    class="flow-content"
+    style="--flow-space: 1em; --star-size: 2em"
+  >
+    {{ .Content }}
+  </div>
+</section>
+
+<section class="pagination">
+  {{if .PrevInSection}}
+  <a href="{{ .PrevInSection.Permalink }}">Previous</a>
+  {{end}} {{if .NextInSection}}
+  <a href="{{ .NextInSection.Permalink }}">Next</a>
+  {{end}}
+</section>
+
+{{ end }}

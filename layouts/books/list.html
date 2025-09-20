@@ -1,0 +1,45 @@
+{{ define "main" }}
+
+<!-- Create an array item for each year -->
+{{ $years := slice }}
+  {{ range .Pages }}
+    {{ $year := slicestr .Date 0 4 }}
+    {{ $years = $years | append $year }} {{ end }} {{ $uniqueYears := $years | uniq }}
+
+<h1>{{ .Params.Title }}</h1>
+<!-- Show the books read for each year -->
+{{ range $uniqueYears }}
+<section class="book-list" style="--flow-space: 4em">
+  <h2
+    id="{{ . }}"
+    class="sticky-header"
+    style="view-transition-name: year-{{ . }}"
+  >
+    {{- . -}}
+  </h2>
+  {{ $uniqueYear := .}}
+  <ul role="list" class="flow-content">
+    {{ range $.Pages }} {{ if eq (slicestr .Date 0 4) $uniqueYear }}
+    <li class="book-list-item {{ .Params.category }}">
+      {{ partial "bookcover.html" . }}
+      <div class="book-content flow-content" style="--flow-space: 0.75rem">
+        <h3 style="view-transition-name: header-{{ .Params.id  }}">
+          <a class="{{ .Params.category }}-normal" href="{{ .Permalink }}">{{ .Title }}</a>
+        </h3>
+        <p>
+          By <strong>{{ .Params.author}}</strong> |
+          <span class="{{ .Params.category }}-dark bold">
+            {{ .Params.category | humanize }}
+          </span>
+        </p>
+        {{ partial "rating.html" . }}
+        <p>{{- .Params.review -}}</p>
+      </div>
+    </li>
+
+    {{ end }}
+  {{ end }}
+  </ul>
+</section>
+{{ end }}
+{{ end }}

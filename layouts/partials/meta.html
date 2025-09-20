@@ -1,0 +1,9 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>{{ .Page.Title }}</title>
+{{ $opts := dict "transpiler" "dartsass" }}
+{{ $styles := resources.Get "scss/main.scss" | css.Sass $opts}}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
+<link rel="icon" href="https://ik.imagekit.io/dwhenson/personal-site/favicon-dwh_b7VY5PFyv.png?updatedAt=1639820192154">
+<meta name="description" content="All the books read by Dave Henson since 2024.">

@@ -1,0 +1,30 @@
+@use "../abstracts" as *;
+
+.fiction-light {
+  color: color-value(fiction, light);
+  transition: all 200ms ease;
+}
+
+.fiction-normal {
+  font-weight: $fw-700;
+  color: color-value(fiction, normal);
+  transition: all 200ms ease;
+}
+
+.fiction-dark {
+  color: color-value(fiction, dark);
+  transition: all 200ms ease;
+}
+
+a.fiction-light:hover {
+  color: color-value(fiction, dark);
+}
+
+a.fiction-normal:hover {
+  font-weight: $fw-700;
+  color: color-value(fiction, light);
+}
+
+a.fiction-dark:hover {
+  color: color-value(fiction, light);
+}

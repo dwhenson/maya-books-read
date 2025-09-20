@@ -1,0 +1,48 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "medium" {
+    @media (width >= 40em) {
+      @content;
+    }
+  }
+
+ @else if $breakpoint == "large" {
+    @media (width >= 60em) {
+      @content;
+    }
+  }
+}
+
+@mixin box-shadow($color) {
+  box-shadow:
+    0 0.6px 0.5px rgb($color, 26%),
+    0 0.9px 0.7px -1.2px rgb($color, 21%),
+    0 2.5px 1.9px -2.5px rgb($color, 16%),
+    -0.1px 7px 5.3px -3.7px rgb($color, 11%),
+    -0.2px 15.8px 11.9px -5px rgb($color, 5%);
+}
+
+@mixin overlay($color) {
+  border: 3px solid $color;
+  border-radius: 0.25em;
+
+  &::after {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    opacity: 0;
+    background: $color;
+    transition: opacity 300ms ease;
+    content: "";
+  }
+
+  &:hover::after {
+    opacity: 0.2;
+  }
+}

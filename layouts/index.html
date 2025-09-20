@@ -1,0 +1,52 @@
+{{ define "main" }}
+  {{ .Content }}
+
+
+  <!-- Create an array item for each year -->
+  {{ $years := slice }}
+  {{ range where $.Site.RegularPages "Section" "books" }}
+    {{ $year := slicestr .Date 0 4 }}
+    {{ $years = $years | append $year }}
+  {{ end }}
+  {{ $uniqueYears := $years | uniq }}
+
+
+  <h1>Bookshelf</h1>
+
+  <blockquote >
+    "I cannot remember the books I've read any more than the meals I have eaten; even so, they have made me."
+    <cite style="margin-inline-start: 2em;"><br>Ralph Waldo Emerson</cite>
+  </blockquote>
+  <!-- For each year, get the total number of books read -->
+  {{ range $uniqueYears }}
+    <h2 style="view-transition-name: year-{{ . }}"><a href="/books/#{{ . }}">{{- . -}} </a></h2>
+    {{ $uniqueYear := . }}
+    {{ $total := slice }}
+    {{ $books := where $.Site.RegularPages "Section" "eq" "books" }}
+    {{ range $books }}
+      {{ if and (eq (slicestr .Date 0 4) $uniqueYear) }}
+        {{ $total = $total | append . }}
+      {{ end }}
+    {{ end }}
+
+    {{ $fiction := where $total ".Params.category" "eq" "fiction" }}
+    {{ $nonFiction := where $total ".Params.category" "eq" "nonfiction" }}
+
+    <!-- Show the number of books and total pages read per category -->
+    <h3>{{ len $total }} {{ cond (len $total | eq 1) "book" "books" }}</h3>
+    <h4 style="margin-block-start: 0.25em">
+      <span class="fiction-normal">{{ len $fiction }} fiction</span> &
+      <span class="nonfiction-normal">{{ len $nonFiction }} non-fiction</span>
+    </h4>
+    <div class="bookcover-grid">
+      {{ range $total }}
+        <a href="{{ .RelPermalink }}">
+          {{ partial "bookcover.html" . }}
+        </a>
+      {{ end }}
+    </div>
+
+    <!-- End unique year loop -->
+  {{ end }}
+  <!-- End main -->
+{{ end }}

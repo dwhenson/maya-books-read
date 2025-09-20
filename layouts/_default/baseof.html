@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{{ partial "meta.html" . }}
+</head>
+<body class="center-content">
+	{{ partial "nav.html" . }}
+
+	<main id="main-content" class="flow-content" style="--flow-space: 1em;">
+		{{ block "main" . }}
+		{{ end }}
+	</main>
+{{ partial "footer.html" . }}
+{{ $options := dict "targetPath" "js/main.js" }}
+{{ $scripts := resources.Get "js/main.js" | js.Build $options | resources.Minify }}
+<script src="{{ $scripts.RelPermalink }}" ></script>
+</body>
+</html>

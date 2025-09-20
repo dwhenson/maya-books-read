@@ -1,0 +1,16 @@
+@use "../abstracts" as *;
+
+.book-detail {
+  display: flex;
+  flex-direction: column;
+  gap: space-value(space-s);
+
+  > * {
+    flex-basis: fit-content;
+  }
+
+  @include respond-to("medium") {
+    flex-direction: row;
+    gap: space-value(space-2xl);
+  }
+}

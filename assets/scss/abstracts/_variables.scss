@@ -1,0 +1,97 @@
+@use "sass:color";
+
+/* COLORS */
+
+$color-dark: #293136;
+$color-light: #fefefe;
+$color-fiction: #47009e;
+$color-nonfiction: #ff0054;
+$color-accent: #ff7300;
+
+$colors: (
+  fiction: (
+    light:
+      color.scale(
+        $color: $color-fiction,
+        $lightness: 20%,
+      ),
+    normal: $color-fiction,
+    dark:
+      color.scale(
+        $color: $color-fiction,
+        $lightness: -20%,
+      ),
+  ),
+  nonfiction: (
+    light:
+      color.scale(
+        $color: $color-nonfiction,
+        $lightness: 30%,
+      ),
+    normal: $color-nonfiction,
+    dark:
+      color.scale(
+        $color: $color-nonfiction,
+        $lightness: -20%,
+      ),
+  ),
+  accent: (
+    light:
+      color.scale(
+        $color: $color-accent,
+        $lightness: 30%,
+      ),
+    normal: $color-accent,
+    dark:
+      color.scale(
+        $color: $color-accent,
+        $lightness: -20%,
+      ),
+  ),
+);
+
+/* TYPOGRAPHY */
+
+$font-sizes: (
+  "step--1": clamp(0.83rem, calc(0.8rem + 0.15vw), 0.94rem),
+  "step-0": clamp(1rem, calc(0.93rem + 0.36vw), 1.25rem),
+  "step-1": clamp(1.2rem, calc(1.07rem + 0.67vw), 1.67rem),
+  "step-2": clamp(1.44rem, calc(1.22rem + 1.12vw), 2.22rem),
+  "step-3": clamp(1.73rem, calc(1.38rem + 1.76vw), 2.96rem),
+  "step-4": clamp(2.07rem, calc(1.54rem + 2.68vw), 3.95rem),
+  "step-5": clamp(2.49rem, calc(1.7rem + 3.96vw), 5.26rem),
+);
+$ff-body: system-ui, sans-serif;
+$ff-headings: system-ui, sans-serif;
+$fw-400: 400;
+$fw-700: 700;
+
+/* SIZING */
+
+$sizes: (
+  "space-3xs": clamp(0.25rem, calc(0.23rem + 0.09vw), 0.31rem),
+  "space-2xs": clamp(0.5rem, calc(0.46rem + 0.18vw), 0.63rem),
+  "space-xs": clamp(0.75rem, calc(0.7rem + 0.27vw), 0.94rem),
+  "space-s": clamp(1rem, calc(0.93rem + 0.36vw), 1.25rem),
+  "space-m": clamp(1.5rem, calc(1.39rem + 0.54vw), 1.88rem),
+  "space-l": clamp(2rem, calc(1.86rem + 0.71vw), 2.5rem),
+  "space-xl": clamp(3rem, calc(2.79rem + 1.07vw), 3.75rem),
+  "space-2xl": clamp(4rem, calc(3.71rem + 1.43vw), 5rem),
+  "space-3xl": clamp(6rem, calc(5.57rem + 2.14vw), 7.5rem),
+  "space-3xs-2xs": clamp(0.25rem, calc(0.14rem + 0.54vw), 0.63rem),
+  "space-2xs-xs": clamp(0.5rem, calc(0.38rem + 0.63vw), 0.94rem),
+  "space-xs-s": clamp(0.75rem, calc(0.61rem + 0.71vw), 1.25rem),
+  "space-s-m": clamp(1rem, calc(0.75rem + 1.25vw), 1.88rem),
+  "space-m-l": clamp(1.5rem, calc(1.21rem + 1.43vw), 2.5rem),
+  "space-l-xl": clamp(2rem, calc(1.5rem + 2.5vw), 3.75rem),
+  "space-xl-2xl": clamp(3rem, calc(2.43rem + 2.86vw), 5rem),
+  "space-2xl-3xl": clamp(4rem, calc(3rem + 5vw), 7.5rem),
+);
+
+/* BREAKPOINTS */
+
+$breakpoints: (
+  "small": 40rem,
+  "medium": 50rem,
+  "large": 70rem,
+);

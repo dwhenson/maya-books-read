@@ -1,0 +1,17 @@
+@use "../abstracts" as *;
+
+.center-content {
+  --min: #{space-value(space-m)};
+  --container-max: 1440px;
+
+  display: grid;
+  grid-template-columns:
+    minmax(var(--min, 1rem), 1fr)
+    minmax(0, 1240px)
+    minmax(var(--min, 1rem), 1fr);
+  grid-template-rows: auto 1fr auto;
+
+  > * {
+    grid-column: 2;
+  }
+}

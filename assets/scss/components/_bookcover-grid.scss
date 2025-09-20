@@ -1,0 +1,28 @@
+@use "../abstracts" as *;
+
+.bookcover-grid {
+  display: grid;
+  border-radius: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 100px), 150px));
+  gap: space-value(space-3xs);
+
+  div {
+    position: relative;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .fiction {
+    @include overlay(color-value(fiction, dark));
+  }
+
+  .nonfiction {
+    @include overlay(color-value(nonfiction, dark));
+  }
+}

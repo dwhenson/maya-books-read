@@ -1,0 +1,11 @@
+@use "../abstracts" as *;
+
+.cover-image {
+  .fiction & {
+    @include box-shadow(color-value(fiction, dark));
+  }
+
+  .nonfiction & {
+    @include box-shadow(color-value(nonfiction, dark));
+  }
+}

@@ -1,0 +1,23 @@
+@use "../abstracts" as *;
+
+.rating {
+  --star-color: transparent;
+  --percent: calc(var(--rating) / 5 * 100%);
+
+  display: inline-block;
+  inline-size: min-content;
+  font-size: var(--star-size, 1.5em);
+  line-height: 1;
+
+  &::before {
+    letter-spacing: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--starred-color, currentcolor) var(--percent),
+      var(--star-color) var(--percent)
+    );
+    background-clip: text;
+    content: "★★★★★";
+    -webkit-text-fill-color: transparent;
+  }
+}

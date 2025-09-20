@@ -1,0 +1,95 @@
+@use "../abstracts" as *;
+
+@view-transition {
+  navigation: auto;
+}
+
+body {
+  font-family: system-ui;
+  font-family: $ff-body;
+  font-size: font-value(step-0);
+  line-height: 1.5;
+  color: $color-dark;
+  background-color: $color-light;
+  text-wrap: pretty;
+
+  > * + * {
+    margin-block-start: max(12vh, 3rem);
+  }
+}
+
+main {
+  grid-template-rows: 1fr;
+}
+
+:where(h1, h2, h3, h4) {
+  font-family: $ff-headings;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: font-value(step-5);
+}
+
+h2 {
+  font-size: font-value(step-4);
+}
+
+h3 {
+  font-size: font-value(step-3);
+}
+
+h4 {
+  font-size: font-value(step-2);
+}
+
+p {
+  max-inline-size: min(100%, 55ch);
+}
+
+small {
+  font-size: font-value(step--1);
+}
+
+a:not([class]) {
+  font-weight: $fw-700;
+  color: color-value(accent, normal);
+  transition: all 200ms ease;
+
+ nav & {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: color-value(accent, light);
+  }
+}
+
+blockquote {
+  max-inline-size: 60ch;
+  margin-inline-start: 2px solid $color-accent;
+
+  > cite {
+    display: block;
+    inline-size: fit-content;
+    margin-block-start: 0.25rem;
+    font-weight: 700;
+  }
+}
+
+:focus-visible {
+  opacity: 1 !important;
+  outline: 4px solid currentcolor;
+  outline-offset: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: transparent;
+}
+
+  a[aria-current="true"] {
+    font-weight: bold;
+    text-decoration:  solid 3px underline !important;
+    text-underline-offset: 0.25em;
+  }

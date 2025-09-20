@@ -1,0 +1,29 @@
+@use "../abstracts" as *;
+
+.nonfiction-light {
+  color: color-value(nonfiction, light);
+  transition: all 200ms ease;
+}
+
+.nonfiction-normal {
+  font-weight: $fw-700;
+  color: color-value(nonfiction, normal);
+  transition: all 200ms ease;
+}
+
+.nonfiction-dark {
+  color: color-value(nonfiction, dark);
+  transition: all 200ms ease;
+}
+
+a.nonfiction-light:hover {
+  color: color-value(nonfiction, dark);
+}
+
+a.nonfiction-normal:hover {
+  color: color-value(nonfiction, light);
+}
+
+a.nonfiction-dark:hover {
+  color: color-value(nonfiction, light);
+}

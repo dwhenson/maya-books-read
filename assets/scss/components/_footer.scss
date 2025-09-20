@@ -1,0 +1,11 @@
+@use "../abstracts" as *;
+
+footer {
+  margin-block-end: space-value(space-l);
+
+  ul {
+    display: flex;
+    gap: space-value(space-xl);
+    text-decoration: none;
+  }
+}
